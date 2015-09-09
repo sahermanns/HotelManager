@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Hotel;
+
 @interface RoomListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) Hotel *selectedHotel;
 
 @end

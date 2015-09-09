@@ -9,43 +9,63 @@
 #import "RoomListViewController.h"
 #import "Room.h"
 #import "AppDelegate.h"
+#import "Hotel.h"
 
 @interface RoomListViewController ()
 
 @property (strong, nonatomic) NSArray *rooms;
+@property (strong,nonatomic) UITableView *tableView;
 
 
 @end
 
 @implementation RoomListViewController
 
+-(void)loadView {
+  UIView *rootView = [[UIView alloc] init];
+  
+  UITableView *tableView = [[UITableView alloc] initWithFrame:rootView.frame style:UITableViewStylePlain];
+  self.tableView = tableView;
+  [tableView setTranslatesAutoresizingMaskIntoConstraints:false];
+  [rootView addSubview:tableView];
+  
+  NSDictionary *views = @{@"tableView" : tableView};
+  
+  NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|" options:0 metrics:nil views:views];
+  [rootView addConstraints:tableViewVerticalConstraints];
+  NSArray *tableViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|" options:0 metrics:nil views:views];
+  [rootView addConstraints:tableViewHorizontalConstraints];
+  
+  self.view = rootView;
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-  UIView *rootView = [[UIView alloc] init];
-  rootView.backgroundColor = [UIColor whiteColor];
+  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"RoomCell"];
   
-  UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-  [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"RoomCell"];
-  [rootView addSubview: tableView];
+  self.rooms = [self.selectedHotel.rooms allObjects];
   
-  self.view = rootView;
+//  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
   
-  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
+//  AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//  NSManagedObjectContext* context = appDelegate.managedObjectContext;
+//  
+//  NSError *fetchError;
+//  self.rooms = [context executeFetchRequest:fetchRequest error:&fetchError];
+//  
+//  if (fetchError) {
+//    NSLog(@"%@",fetchError.localizedDescription);
+//  }
+//  
+//  NSLog(@"%lu",(unsigned long)self.rooms.count);
+//  
+  self.tableView.delegate = self;
+  self.tableView.dataSource = self;
   
-  AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-  NSManagedObjectContext* context = appDelegate.managedObjectContext;
-  
-  
-  NSError *fetchError;
-  NSArray *results = [context executeFetchRequest:fetchRequest error:&fetchError];
-  
-  NSLog(@"%lu",(unsigned long)results.count);
-  
-  tableView.delegate = self;
-  tableView.dataSource = self;
-  
-  [tableView reloadData];
+  [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,17 +75,20 @@
 
 #pragma TableView
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return self.rooms.count;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RoomCell" forIndexPath:indexPath];
   
-    //  var room = rooms[indexPath.row]
+  Room *room = self.rooms[indexPath.row];
+  cell.textLabel.text = [NSString stringWithFormat:@"%@", room.number];
+  
  
   return cell;
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 10;
-    //  return hotels.count;
-}
+
 
 /*
 #pragma mark - Navigation

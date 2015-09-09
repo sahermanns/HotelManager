@@ -20,6 +20,11 @@
 		3E4B8C831B9E876E007BFE57 /* Guest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8C821B9E876E007BFE57 /* Guest.m */; };
 		3E4B8C8B1B9F5847007BFE57 /* HotelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8C8A1B9F5847007BFE57 /* HotelListViewController.m */; };
 		3E4B8C8E1B9F625B007BFE57 /* RoomListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8C8D1B9F625B007BFE57 /* RoomListViewController.m */; };
+		3E4B8C901B9FB7D7007BFE57 /* hotels.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E4B8C8F1B9FB7D7007BFE57 /* hotels.json */; };
+		3E4B8C931B9FB973007BFE57 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8C921B9FB973007BFE57 /* DatePickerViewController.m */; };
+		3E4B8C961B9FD7AD007BFE57 /* DatePickerEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8C951B9FD7AD007BFE57 /* DatePickerEndViewController.m */; };
+		3E4B8C991B9FD8A8007BFE57 /* BookReservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8C981B9FD8A8007BFE57 /* BookReservationViewController.m */; };
+		3E4B8C9C1BA0A72D007BFE57 /* AvailableRoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B8C9B1BA0A72D007BFE57 /* AvailableRoomsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,15 @@
 		3E4B8C8A1B9F5847007BFE57 /* HotelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelListViewController.m; sourceTree = "<group>"; };
 		3E4B8C8C1B9F625B007BFE57 /* RoomListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomListViewController.h; sourceTree = "<group>"; };
 		3E4B8C8D1B9F625B007BFE57 /* RoomListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomListViewController.m; sourceTree = "<group>"; };
+		3E4B8C8F1B9FB7D7007BFE57 /* hotels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hotels.json; sourceTree = "<group>"; };
+		3E4B8C911B9FB973007BFE57 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		3E4B8C921B9FB973007BFE57 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		3E4B8C941B9FD7AD007BFE57 /* DatePickerEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerEndViewController.h; sourceTree = "<group>"; };
+		3E4B8C951B9FD7AD007BFE57 /* DatePickerEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerEndViewController.m; sourceTree = "<group>"; };
+		3E4B8C971B9FD8A8007BFE57 /* BookReservationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookReservationViewController.h; sourceTree = "<group>"; };
+		3E4B8C981B9FD8A8007BFE57 /* BookReservationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookReservationViewController.m; sourceTree = "<group>"; };
+		3E4B8C9A1BA0A72D007BFE57 /* AvailableRoomsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableRoomsViewController.h; sourceTree = "<group>"; };
+		3E4B8C9B1BA0A72D007BFE57 /* AvailableRoomsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableRoomsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +134,7 @@
 		3E4B8C371B9E2953007BFE57 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3E4B8C8F1B9FB7D7007BFE57 /* hotels.json */,
 				3E4B8C381B9E2953007BFE57 /* Info.plist */,
 				3E4B8C391B9E2953007BFE57 /* main.m */,
 			);
@@ -153,6 +168,14 @@
 		3E4B8C881B9E8833007BFE57 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3E4B8C911B9FB973007BFE57 /* DatePickerViewController.h */,
+				3E4B8C921B9FB973007BFE57 /* DatePickerViewController.m */,
+				3E4B8C941B9FD7AD007BFE57 /* DatePickerEndViewController.h */,
+				3E4B8C951B9FD7AD007BFE57 /* DatePickerEndViewController.m */,
+				3E4B8C971B9FD8A8007BFE57 /* BookReservationViewController.h */,
+				3E4B8C981B9FD8A8007BFE57 /* BookReservationViewController.m */,
+				3E4B8C9A1BA0A72D007BFE57 /* AvailableRoomsViewController.h */,
+				3E4B8C9B1BA0A72D007BFE57 /* AvailableRoomsViewController.m */,
 				3E4B8C891B9F5847007BFE57 /* HotelListViewController.h */,
 				3E4B8C8A1B9F5847007BFE57 /* HotelListViewController.m */,
 				3E4B8C8C1B9F625B007BFE57 /* RoomListViewController.h */,
@@ -245,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4B8C901B9FB7D7007BFE57 /* hotels.json in Resources */,
 				3E4B8C4B1B9E2953007BFE57 /* LaunchScreen.xib in Resources */,
 				3E4B8C481B9E2953007BFE57 /* Images.xcassets in Resources */,
 			);
@@ -264,15 +288,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4B8C931B9FB973007BFE57 /* DatePickerViewController.m in Sources */,
 				3E4B8C7D1B9E876D007BFE57 /* Room.m in Sources */,
 				3E4B8C801B9E876E007BFE57 /* Hotel.m in Sources */,
+				3E4B8C9C1BA0A72D007BFE57 /* AvailableRoomsViewController.m in Sources */,
 				3E4B8C831B9E876E007BFE57 /* Guest.m in Sources */,
 				3E4B8C8E1B9F625B007BFE57 /* RoomListViewController.m in Sources */,
 				3E4B8C3D1B9E2953007BFE57 /* AppDelegate.m in Sources */,
+				3E4B8C961B9FD7AD007BFE57 /* DatePickerEndViewController.m in Sources */,
 				3E4B8C7A1B9E876D007BFE57 /* Reservation.m in Sources */,
 				3E4B8C401B9E2953007BFE57 /* HotelManager.xcdatamodeld in Sources */,
 				3E4B8C431B9E2953007BFE57 /* ViewController.m in Sources */,
 				3E4B8C3A1B9E2953007BFE57 /* main.m in Sources */,
+				3E4B8C991B9FD8A8007BFE57 /* BookReservationViewController.m in Sources */,
 				3E4B8C8B1B9F5847007BFE57 /* HotelListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

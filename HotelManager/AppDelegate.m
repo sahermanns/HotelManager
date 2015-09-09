@@ -28,10 +28,16 @@
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   [self.window makeKeyAndVisible];
   
-  HotelListViewController *hotelListViewController = [[HotelListViewController alloc] init];
+//  HotelListViewController *hotelListViewController = [[HotelListViewController alloc] init];
   
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:hotelListViewController];
+  ViewController *viewController = [[ViewController alloc] init];
+  
+//  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:hotelListViewController];
+//  self.window.rootViewController = navigationController;
+  
+  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
   self.window.rootViewController = navigationController;
+  
   
   Hotel *hotel1 = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext:self.managedObjectContext];
   hotel1.name = @"Four Seasons";
@@ -56,31 +62,31 @@
   room1.hotel = hotel1;
   
   Room *room2 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
-  room2.number = @1;
+  room2.number = @2;
   room2.hotel = hotel1;
   
   Room *room3 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
-  room3.number = @1;
+  room3.number = @3;
   room3.hotel = hotel2;
   
   Room *room4 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
-  room4.number = @1;
+  room4.number = @4;
   room4.hotel = hotel2;
   
   Room *room5 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
-  room5.number = @1;
+  room5.number = @5;
   room5.hotel = hotel3;
   
   Room *room6 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
-  room6.number = @1;
+  room6.number = @6;
   room6.hotel = hotel3;
   
   Room *room7 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
-  room7.number = @1;
+  room7.number = @7;
   room7.hotel = hotel4;
   
   Room *room8 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
-  room8.number = @1;
+  room8.number = @8;
   room8.hotel = hotel4;
   
 
@@ -102,7 +108,7 @@
 //  room7.managedObjectContext;
 //  room8.managedObjectContext;
 //  
-  
+//  
 //  NSError *saveError;
 //  BOOL result = [self.managedObjectContext save:&saveError];
 //    if (!result) {
@@ -117,13 +123,46 @@
   
   NSLog(@"%lu",(unsigned long)results.count);
   
-  
-  
-  
-  
+
   
   return YES;
 }
+
+//-(void)seedCoreDataIfNeeded {
+//  
+//  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
+//  NSError *fetchError;
+//  NSInteger count = [self.managedObjectContext countForFetchRequest:fetchRequest error:&fetchError];
+//  if (count == 0) {
+////    we need to seed our database
+//    
+//    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"hotels" ofType:@"json"];
+//    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+//    
+//    NSError *jsonError;
+//    NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&jsonError];
+//    
+//    self.hotels =[NSMutableArray array];
+//    
+//    NSArray *hotelsArray = [dataDictionary objectForKey: @"Hotels"];
+//    for (NSDictionary *hotelDisctionary in hotelsArray) {
+//      Hotel * hotel = [Hotel hotelWithName:[hotelDisctionary objectForKey:@"name"]];
+//      hotel.location = [hotelDictionary objectForKey: @"location"];
+//      hotel.stars = [hotelDictionary objectForKey: @"stars"];
+//      Room * room = [Hotel hotelWithName:[roomsDisctionary objectForKey:@"rooms"]];
+//      room.number = [roomsDisctionary objectForKey: @"number"];
+//      room.beds = [roomsDisctionary objectForKey: @"beds"];
+//      room.rate = [roomsDisctionary objectForKey: @"rate"];
+//      
+//      
+//    }
+//    
+//    
+//    if (jsonError) {
+//      return;
+//    }
+//  }
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
   // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
