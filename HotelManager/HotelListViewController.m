@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "RoomListViewController.h"
 #import "Reservation.h"
+#import "CoreDataStack.h"
 
 @interface HotelListViewController () 
 
@@ -42,24 +43,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
+  self.tableView.delegate = self;
+  self.tableView.dataSource = self;
+  
   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HotelCell"];
   
   AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-  NSManagedObjectContext* context = appDelegate.managedObjectContext;
   
   NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
   
   NSError *fetchError;
-  self.hotels = [context executeFetchRequest:fetchRequest error:&fetchError];
+  self.hotels = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
   
   if (fetchError) {
     NSLog(@"%@",fetchError.localizedDescription);
   }
   
   NSLog(@"%lu",(unsigned long)self.hotels.count);
-  
-  self.tableView.delegate = self;
-  self.tableView.dataSource = self;
   
   [self.tableView reloadData];
   

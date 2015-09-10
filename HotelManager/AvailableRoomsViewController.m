@@ -11,6 +11,8 @@
 #import "Hotel.h"
 #import "AppDelegate.h"
 #import "Reservation.h"
+#import "CoreDataStack.h"
+#import "Room.h"
 
 @interface AvailableRoomsViewController ()
 
@@ -50,19 +52,6 @@
   
   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"AvailableRoomsCell"];
   
-//  AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//  NSManagedObjectContext* context = appDelegate.managedObjectContext;
-//  
-//  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"AvailableRoomsCell"];
-//  
-//  NSError *fetchError;
-//  self.hotels = [context executeFetchRequest:fetchRequest error:&fetchError];
-//  
-//  if (fetchError) {
-//    NSLog(@"%@",fetchError.localizedDescription);
-//  }
-//  
-//  NSLog(@"%lu",(unsigned long)self.hotels.count);
   
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
@@ -79,7 +68,7 @@
   NSPredicate *predicate = [NSPredicate predicateWithFormat:@"checkIn <= %@ AND checkOut >= %@",toDate,fromDate];
   request.predicate = predicate;
   NSError *fetchError;
-  NSArray *results = [appDelegate.managedObjectContext executeFetchRequest:request error:&fetchError];
+  NSArray *results = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:request error:&fetchError];
   
   NSMutableArray *badRooms = [[NSMutableArray alloc] init];
   for (Reservation *reservation in results) {
@@ -92,7 +81,7 @@
   
   NSError *finalError;
   
-  NSArray *finalResults = [appDelegate.managedObjectContext executeFetchRequest:finalRequest error:&finalError];
+  NSArray *finalResults = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:finalRequest error:&finalError];
   
   if (finalError) {
     return nil;
@@ -101,6 +90,31 @@
   
 }
 
+-(void)bookTestReservation {
+  
+  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+  
+  Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:appDelegate.coreDataStack.managedObjectContext];
+  
+  reservation.startDate = [NSDate date];
+  reservation.endDate = [NSDate dateWithTimeInterval:86400 * 2 sinceDate:[NSDate date]];
+  
+  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
+  fetchRequest.predicate = [NSPredicate predicateWithFormat:@"number == 2"];
+  NSError *fetchError;
+  NSArray *results = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+  if (results.count > 0) {
+    Room *room = results.firstObject;
+    reservation.room = room;
+    NSError *saveError;
+    if (![appDelegate.coreDataStack.managedObjectContext save:&saveError]) {
+      NSLog(@"%@",saveError.localizedDescription);
+    }
+    
+  }
+  
+  
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -109,6 +123,7 @@
 }
 
 #pragma mark - TableView
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   return self.hotels.count;
   

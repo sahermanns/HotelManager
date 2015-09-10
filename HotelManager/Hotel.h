@@ -2,7 +2,7 @@
 //  Hotel.h
 //  HotelManager
 //
-//  Created by Sarah Hermanns on 9/7/15.
+//  Created by Sarah Hermanns on 9/10/15.
 //  Copyright (c) 2015 SASH. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSNumber * stars;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * location;
 @property (nonatomic, retain) NSSet *rooms;
 @property (nonatomic, retain) NSSet *guest;
 @property (nonatomic, retain) NSSet *reservation;

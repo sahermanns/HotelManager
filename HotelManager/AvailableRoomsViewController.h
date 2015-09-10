@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AvailableRoomsViewController : UIViewController
+@interface AvailableRoomsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

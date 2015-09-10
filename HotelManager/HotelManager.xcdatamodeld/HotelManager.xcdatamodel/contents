@@ -8,6 +8,7 @@
         <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="guest" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Hotel" representedClassName="Hotel" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stars" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="guest" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Guest" inverseName="hotel" inverseEntity="Guest" syncable="YES"/>
@@ -15,23 +16,24 @@
         <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Room" inverseName="hotel" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Reservation" representedClassName="Reservation" syncable="YES">
-        <attribute name="checkIn" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="checkOut" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="guest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Guest" inverseName="reservation" inverseEntity="Guest" syncable="YES"/>
         <relationship name="hotel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hotel" inverseName="reservation" inverseEntity="Hotel" syncable="YES"/>
         <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="reservation" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Room" representedClassName="Room" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="beds" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="guest" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Guest" inverseName="room" inverseEntity="Guest" syncable="YES"/>
         <relationship name="hotel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hotel" inverseName="rooms" inverseEntity="Hotel" syncable="YES"/>
         <relationship name="reservation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reservation" inverseName="room" inverseEntity="Reservation" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Hotel" positionX="-63" positionY="-18" width="128" height="118"/>
-        <element name="Room" positionX="115" positionY="90" width="128" height="118"/>
-        <element name="Reservation" positionX="232" positionY="-54" width="128" height="118"/>
-        <element name="Guest" positionX="61" positionY="-198" width="128" height="118"/>
+        <element name="Hotel" positionX="-261" positionY="-108" width="128" height="133"/>
+        <element name="Room" positionX="-99" positionY="-46" width="128" height="133"/>
+        <element name="Reservation" positionX="88" positionY="17" width="128" height="118"/>
+        <element name="Guest" positionX="252" positionY="108" width="128" height="118"/>
     </elements>
 </model>

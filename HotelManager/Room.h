@@ -2,7 +2,7 @@
 //  Room.h
 //  HotelManager
 //
-//  Created by Sarah Hermanns on 9/7/15.
+//  Created by Sarah Hermanns on 9/10/15.
 //  Copyright (c) 2015 SASH. All rights reserved.
 //
 
@@ -13,8 +13,9 @@
 
 @interface Room : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * number;
+@property (nonatomic, retain) NSNumber * beds;
+@property (nonatomic, retain) NSNumber * rate;
 @property (nonatomic, retain) Hotel *hotel;
 @property (nonatomic, retain) NSSet *guest;
 @property (nonatomic, retain) NSSet *reservation;

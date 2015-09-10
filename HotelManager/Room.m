@@ -2,7 +2,7 @@
 //  Room.m
 //  HotelManager
 //
-//  Created by Sarah Hermanns on 9/7/15.
+//  Created by Sarah Hermanns on 9/10/15.
 //  Copyright (c) 2015 SASH. All rights reserved.
 //
 
@@ -14,8 +14,9 @@
 
 @implementation Room
 
-@dynamic name;
 @dynamic number;
+@dynamic beds;
+@dynamic rate;
 @dynamic hotel;
 @dynamic guest;
 @dynamic reservation;

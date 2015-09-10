@@ -47,21 +47,7 @@
   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"RoomCell"];
   
   self.rooms = [self.selectedHotel.rooms allObjects];
-  
-//  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-  
-//  AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//  NSManagedObjectContext* context = appDelegate.managedObjectContext;
-//  
-//  NSError *fetchError;
-//  self.rooms = [context executeFetchRequest:fetchRequest error:&fetchError];
-//  
-//  if (fetchError) {
-//    NSLog(@"%@",fetchError.localizedDescription);
-//  }
-//  
-//  NSLog(@"%lu",(unsigned long)self.rooms.count);
-//  
+   
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
   
