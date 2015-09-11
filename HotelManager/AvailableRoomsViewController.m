@@ -15,6 +15,8 @@
 #import "Room.h"
 #import "ReservationService.h"
 
+#import "GAI.h"
+
 @interface AvailableRoomsViewController ()
 
 @property (strong,nonatomic) UITableView *tableView;

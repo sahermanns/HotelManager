@@ -13,6 +13,8 @@
 #import "Reservation.h"
 #import "CoreDataStack.h"
 
+#import "GAI.h"
+
 @interface HotelListViewController () 
 
 @property (strong,nonatomic) UITableView *tableView;

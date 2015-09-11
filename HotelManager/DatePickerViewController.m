@@ -9,6 +9,8 @@
 #import "DatePickerViewController.h"
 #import "DatePickerEndViewController.h"
 
+#import "GAI.h"
+
 @interface DatePickerViewController ()
 
 @property (strong,nonatomic) UIDatePicker *datePicker;

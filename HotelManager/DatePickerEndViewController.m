@@ -9,6 +9,8 @@
 #import "DatePickerEndViewController.h"
 #import "AvailableRoomsViewController.h"
 
+#import "GAI.h"
+
 @interface DatePickerEndViewController ()
 
 @property (strong,nonatomic) UIDatePicker *datePicker;

@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "Hotel.h"
 
+#import "GAI.h"
+
 @interface RoomListViewController ()
 
 @property (strong, nonatomic) NSArray *rooms;

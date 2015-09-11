@@ -10,6 +10,8 @@
 #import "HotelListViewController.h"
 #import "DatePickerViewController.h"
 
+#import "GAI.h"
+
 @interface ViewController ()
 
 @end

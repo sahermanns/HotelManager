@@ -30,6 +30,13 @@
 		3EEF85F01BA337410095A6FC /* HotelManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF85EF1BA337410095A6FC /* HotelManagerTest.m */; };
 		3EEF85F51BA3636C0095A6FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3EEF85F81BA3636C0095A6FC /* Localizable.strings */; };
 		3EEF85F61BA3636C0095A6FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3EEF85F81BA3636C0095A6FC /* Localizable.strings */; };
+		3EEF85FA1BA37EA30095A6FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF85F91BA37EA30095A6FC /* CoreData.framework */; };
+		3EEF85FC1BA37EC80095A6FC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF85FB1BA37EC80095A6FC /* SystemConfiguration.framework */; };
+		3EEF85FE1BA37EDD0095A6FC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF85FD1BA37EDD0095A6FC /* libz.dylib */; };
+		3EEF86001BA37EFE0095A6FC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF85FF1BA37EFE0095A6FC /* libsqlite3.dylib */; };
+		3EEF86021BA37F4B0095A6FC /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF86011BA37F4B0095A6FC /* libGoogleAnalyticsServices.a */; };
+		3EEF86101BA388BA0095A6FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EEF860F1BA388BA0095A6FC /* GoogleService-Info.plist */; };
+		3EEF86111BA388BA0095A6FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EEF860F1BA388BA0095A6FC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +91,22 @@
 		3EEF85EF1BA337410095A6FC /* HotelManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelManagerTest.m; sourceTree = "<group>"; };
 		3EEF85F11BA362A40095A6FC /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3EEF85F71BA3636C0095A6FC /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3EEF85F91BA37EA30095A6FC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3EEF85FB1BA37EC80095A6FC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3EEF85FD1BA37EDD0095A6FC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3EEF85FF1BA37EFE0095A6FC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		3EEF86011BA37F4B0095A6FC /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ../../../Downloads/GoogleAnalyticsServicesiOS_3.13/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		3EEF86051BA37FCF0095A6FC /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		3EEF86061BA37FCF0095A6FC /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		3EEF86071BA37FCF0095A6FC /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		3EEF86081BA37FCF0095A6FC /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		3EEF86091BA37FCF0095A6FC /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		3EEF860A1BA37FCF0095A6FC /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		3EEF860B1BA37FCF0095A6FC /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		3EEF860C1BA37FCF0095A6FC /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		3EEF860D1BA37FCF0095A6FC /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		3EEF860E1BA37FCF0095A6FC /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		3EEF860F1BA388BA0095A6FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +114,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EEF86021BA37F4B0095A6FC /* libGoogleAnalyticsServices.a in Frameworks */,
+				3EEF86001BA37EFE0095A6FC /* libsqlite3.dylib in Frameworks */,
+				3EEF85FE1BA37EDD0095A6FC /* libz.dylib in Frameworks */,
+				3EEF85FC1BA37EC80095A6FC /* SystemConfiguration.framework in Frameworks */,
+				3EEF85FA1BA37EA30095A6FC /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +135,11 @@
 		3E4B8C2B1B9E2953007BFE57 = {
 			isa = PBXGroup;
 			children = (
-				3EEF85F81BA3636C0095A6FC /* Localizable.strings */,
+				3EEF86011BA37F4B0095A6FC /* libGoogleAnalyticsServices.a */,
+				3EEF85FF1BA37EFE0095A6FC /* libsqlite3.dylib */,
+				3EEF85FD1BA37EDD0095A6FC /* libz.dylib */,
+				3EEF85FB1BA37EC80095A6FC /* SystemConfiguration.framework */,
+				3EEF85F91BA37EA30095A6FC /* CoreData.framework */,
 				3E4B8C361B9E2953007BFE57 /* HotelManager */,
 				3E4B8C531B9E2953007BFE57 /* HotelManagerTests */,
 				3E4B8C351B9E2953007BFE57 /* Products */,
@@ -126,6 +158,7 @@
 		3E4B8C361B9E2953007BFE57 /* HotelManager */ = {
 			isa = PBXGroup;
 			children = (
+				3EEF86041BA37F790095A6FC /* Google */,
 				3E4B8C881B9E8833007BFE57 /* Controller */,
 				3E4B8C871B9E8825007BFE57 /* Model */,
 				3E4B8C811B9E876E007BFE57 /* Guest.h */,
@@ -141,6 +174,7 @@
 		3E4B8C371B9E2953007BFE57 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3EEF860F1BA388BA0095A6FC /* GoogleService-Info.plist */,
 				3E4B8C8F1B9FB7D7007BFE57 /* hotels.json */,
 				3E4B8C381B9E2953007BFE57 /* Info.plist */,
 				3E4B8C391B9E2953007BFE57 /* main.m */,
@@ -169,6 +203,7 @@
 		3E4B8C871B9E8825007BFE57 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3EEF85F81BA3636C0095A6FC /* Localizable.strings */,
 				3E4B8CAD1BA1F518007BFE57 /* Room.h */,
 				3E4B8CAE1BA1F518007BFE57 /* Room.m */,
 				3E4B8CAA1BA1F40D007BFE57 /* Hotel.h */,
@@ -236,6 +271,23 @@
 				3E4B8C3C1B9E2953007BFE57 /* AppDelegate.m */,
 			);
 			name = MainMenu;
+			sourceTree = "<group>";
+		};
+		3EEF86041BA37F790095A6FC /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				3EEF86051BA37FCF0095A6FC /* GAI.h */,
+				3EEF86061BA37FCF0095A6FC /* GAIDictionaryBuilder.h */,
+				3EEF86071BA37FCF0095A6FC /* GAIEcommerceFields.h */,
+				3EEF86081BA37FCF0095A6FC /* GAIEcommerceProduct.h */,
+				3EEF86091BA37FCF0095A6FC /* GAIEcommerceProductAction.h */,
+				3EEF860A1BA37FCF0095A6FC /* GAIEcommercePromotion.h */,
+				3EEF860B1BA37FCF0095A6FC /* GAIFields.h */,
+				3EEF860C1BA37FCF0095A6FC /* GAILogger.h */,
+				3EEF860D1BA37FCF0095A6FC /* GAITrackedViewController.h */,
+				3EEF860E1BA37FCF0095A6FC /* GAITracker.h */,
+			);
+			name = Google;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +372,7 @@
 			files = (
 				3E4B8C901B9FB7D7007BFE57 /* hotels.json in Resources */,
 				3EEF85F51BA3636C0095A6FC /* Localizable.strings in Resources */,
+				3EEF86101BA388BA0095A6FC /* GoogleService-Info.plist in Resources */,
 				3E4B8C4B1B9E2953007BFE57 /* LaunchScreen.xib in Resources */,
 				3E4B8C481B9E2953007BFE57 /* Images.xcassets in Resources */,
 			);
@@ -330,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EEF85F61BA3636C0095A6FC /* Localizable.strings in Resources */,
+				3EEF86111BA388BA0095A6FC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +448,6 @@
 				3EEF85F71BA3636C0095A6FC /* it */,
 			);
 			name = Localizable.strings;
-			path = HotelManager;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -488,6 +541,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HotelManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/sarahhermanns/Downloads/GoogleAnalyticsServicesiOS_3.13,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -498,6 +555,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HotelManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/sarahhermanns/Downloads/GoogleAnalyticsServicesiOS_3.13,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
