@@ -13,6 +13,7 @@
 #import "Reservation.h"
 #import "CoreDataStack.h"
 #import "Room.h"
+#import "ReservationService.h"
 
 @interface AvailableRoomsViewController ()
 
@@ -25,6 +26,29 @@
 
 -(void)loadView {
   UIView *rootView = [[UIView alloc] init];
+  rootView.backgroundColor = [UIColor whiteColor];
+  
+  UILabel *fromDateLabel = [[UILabel alloc] init];
+  [fromDateLabel setTranslatesAutoresizingMaskIntoConstraints:false];
+  fromDateLabel.text = [NSString stringWithFormat:@"%@", self.startDate];
+  fromDateLabel.backgroundColor = [UIColor whiteColor];
+  [rootView addSubview:fromDateLabel];
+  
+  NSLayoutConstraint *fromDateLabelCenterX = [NSLayoutConstraint constraintWithItem:fromDateLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:-50.0];
+  fromDateLabelCenterX.active = true;
+  NSLayoutConstraint *fromDateLabelTopConstraint = [NSLayoutConstraint constraintWithItem:fromDateLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:100.0];
+  fromDateLabelTopConstraint.active = true;
+  
+  UILabel *toDateLabel = [[UILabel alloc] init];
+  [toDateLabel setTranslatesAutoresizingMaskIntoConstraints:false];
+  toDateLabel.text = [NSString stringWithFormat:@"%@", self.endDate];
+  toDateLabel.backgroundColor = [UIColor whiteColor];
+  [rootView addSubview:toDateLabel];
+  
+  NSLayoutConstraint *toDateLabelCenterX = [NSLayoutConstraint constraintWithItem:toDateLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:50.0];
+ toDateLabelCenterX.active = true;
+  NSLayoutConstraint *toDateLabelTopConstraint = [NSLayoutConstraint constraintWithItem:toDateLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:100.0];
+  toDateLabelTopConstraint.active = true;
   
   UITableView *tableView = [[UITableView alloc] initWithFrame:rootView.frame style:UITableViewStylePlain];
   self.tableView = tableView;
@@ -33,7 +57,7 @@
   
   NSDictionary *views = @{@"tableView" : tableView};
   
-  NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|" options:0 metrics:nil views:views];
+  NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-150-[tableView]|" options:0 metrics:nil views:views];
   [rootView addConstraints:tableViewVerticalConstraints];
   NSArray *tableViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|" options:0 metrics:nil views:views];
   [rootView addConstraints:tableViewHorizontalConstraints];
@@ -44,13 +68,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-  NSDate *checkIn = [NSDate date];
-  NSDate *checkOut = [NSDate dateWithTimeInterval:86400 * 2 sinceDate:[NSDate date]];
+  self.tableView.delegate = self;
+  self.tableView.dataSource = self;
   
-  
-  [self fetchAvailableRoomsForFromDate:checkIn toDate:checkOut];
-  
+  NSLog(@"startdate: %@", self.endDate);
+  self.rooms = [ReservationService availableRoomsForStartDate:self.startDate endDate:self.endDate];
+  NSLog(@"%@", self.rooms);
   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"AvailableRoomsCell"];
+  
+  AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Reservation"];
+
+  NSError *fetchError;
+  self.hotels = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+
+  if (fetchError) {
+    NSLog(@"%@",fetchError.localizedDescription);
+  }
+
+  NSLog(@"%lu",(unsigned long)self.hotels.count);
   
   
   self.tableView.delegate = self;
@@ -59,62 +96,7 @@
   [self.tableView reloadData];
 }
 
--(NSArray *)fetchAvailableRoomsForFromDate:(NSDate*)fromDate toDate:(NSDate *)toDate {
-  
-  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-  
-  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Reservation"];
-  
-  NSPredicate *predicate = [NSPredicate predicateWithFormat:@"checkIn <= %@ AND checkOut >= %@",toDate,fromDate];
-  request.predicate = predicate;
-  NSError *fetchError;
-  NSArray *results = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:request error:&fetchError];
-  
-  NSMutableArray *badRooms = [[NSMutableArray alloc] init];
-  for (Reservation *reservation in results) {
-    [badRooms addObject:reservation.room];
-  }
-  
-  NSFetchRequest *finalRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-  NSPredicate *finalPredicate = [NSPredicate predicateWithFormat:@"NOT self IN %@", badRooms];
-  finalRequest.predicate = finalPredicate;
-  
-  NSError *finalError;
-  
-  NSArray *finalResults = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:finalRequest error:&finalError];
-  
-  if (finalError) {
-    return nil;
-  }
-  return finalResults;
-  
-}
 
--(void)bookTestReservation {
-  
-  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-  
-  Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:appDelegate.coreDataStack.managedObjectContext];
-  
-  reservation.startDate = [NSDate date];
-  reservation.endDate = [NSDate dateWithTimeInterval:86400 * 2 sinceDate:[NSDate date]];
-  
-  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-  fetchRequest.predicate = [NSPredicate predicateWithFormat:@"number == 2"];
-  NSError *fetchError;
-  NSArray *results = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
-  if (results.count > 0) {
-    Room *room = results.firstObject;
-    reservation.room = room;
-    NSError *saveError;
-    if (![appDelegate.coreDataStack.managedObjectContext save:&saveError]) {
-      NSLog(@"%@",saveError.localizedDescription);
-    }
-    
-  }
-  
-  
-}
 
 
 - (void)didReceiveMemoryWarning {
@@ -124,8 +106,10 @@
 
 #pragma mark - TableView
 
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return self.hotels.count;
+  NSLog(@"number of rooms in array: %lu", (unsigned long)self.rooms.count);
+  return self.rooms.count;
   
   
 }
@@ -134,9 +118,13 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AvailableRoomsCell" forIndexPath:indexPath];
   
-//  Hotel *hotel = self.hotels[indexPath.row];
-//  cell.textLabel.text = hotel.name;
+//  UITableViewCell *otherCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Available"];
   
+  Room *room = self.rooms[indexPath.row];
+  NSLog(@"%@", room.number);
+  cell.textLabel.text = [NSString stringWithFormat:@"%@", room.number];
+  cell.textLabel.text = [NSString stringWithFormat:@"number:%@ | capacity:%@ | rate:%@", room.number, room.beds, room.rate];
+//  cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, room capacity: %@", room.beds, room.rate];
   
   return cell;
 }
@@ -147,9 +135,11 @@
   
   [self.navigationController pushViewController:destinationVC animated:true];
   
-//  indexPath = self.tableView.indexPathForSelectedRow;
-//  Hotel *selectedHotel = self.hotels[indexPath.row];
-//  destinationVC.selectedHotel = selectedHotel;
+  indexPath = self.tableView.indexPathForSelectedRow;
+  Room *selectedRoom = self.rooms[indexPath.row];
+  destinationVC.selectedRoom = selectedRoom;
+
+  
   
 }
 

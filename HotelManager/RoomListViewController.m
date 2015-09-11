@@ -69,7 +69,7 @@
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RoomCell" forIndexPath:indexPath];
   
   Room *room = self.rooms[indexPath.row];
-  cell.textLabel.text = [NSString stringWithFormat:@"%@", room.number];
+  cell.textLabel.text = [NSString stringWithFormat:@"number:%@ | capacity:%@ | rate:%@", room.number, room.beds, room.rate];
   
  
   return cell;

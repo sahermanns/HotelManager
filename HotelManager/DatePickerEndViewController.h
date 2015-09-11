@@ -10,4 +10,6 @@
 
 @interface DatePickerEndViewController : UIViewController
 
+@property (strong, nonatomic) NSDate *startDate;
+
 @end

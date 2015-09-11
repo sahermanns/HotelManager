@@ -52,5 +52,30 @@
   
 }
 
+-(void)bookTestReservation {
+  
+  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+  
+  Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:appDelegate.coreDataStack.managedObjectContext];
+  
+  reservation.startDate = [NSDate date];
+  reservation.endDate = [NSDate dateWithTimeInterval:86400 * 2 sinceDate:[NSDate date]];
+  
+  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
+  fetchRequest.predicate = [NSPredicate predicateWithFormat:@"number == 2"];
+  NSError *fetchError;
+  NSArray *results = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+  if (results.count > 0) {
+    Room *room = results.firstObject;
+    reservation.room = room;
+    NSError *saveError;
+    if (![appDelegate.coreDataStack.managedObjectContext save:&saveError]) {
+      NSLog(@"%@",saveError.localizedDescription);
+    }
+    
+  }
+  
+  
+}
 
 @end
