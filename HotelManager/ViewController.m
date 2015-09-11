@@ -28,7 +28,7 @@
   UIButton *browseHotelsButton = [[UIButton alloc] init];
   [browseHotelsButton addTarget:self action:@selector(browseHotelsButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [browseHotelsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-  [browseHotelsButton setTitle:@"Browse Hotels" forState:UIControlStateNormal];
+  [browseHotelsButton setTitle: NSLocalizedString(@"Browse Hotels", @"the title of the browse hotels button")  forState:UIControlStateNormal];
   [browseHotelsButton setTranslatesAutoresizingMaskIntoConstraints:false];
   browseHotelsButton.backgroundColor = [UIColor redColor];
   
@@ -38,13 +38,11 @@
   browseHotelsButtonCenterX.active = true;
   NSLayoutConstraint *browseHotelsButtonCenterY = [NSLayoutConstraint constraintWithItem:browseHotelsButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-50.0];
   browseHotelsButtonCenterY.active = true;
-//  NSLayoutConstraint *browseHotelsButtonTopConstraint = [NSLayoutConstraint constraintWithItem:browseHotelsButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-8];
-//  browseHotelsButtonTopConstraint.active = true;
   
   UIButton *bookARoomButton = [[UIButton alloc] init];
   [bookARoomButton addTarget:self action:@selector(bookARoomButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [bookARoomButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-  [bookARoomButton setTitle:@"Book A Room" forState:UIControlStateNormal];
+  [bookARoomButton setTitle: NSLocalizedString(@"Book A Room", @"the title of the booking a room button") forState:UIControlStateNormal];
   [bookARoomButton setTranslatesAutoresizingMaskIntoConstraints:false];
   bookARoomButton.backgroundColor = [UIColor grayColor];
   
@@ -58,7 +56,7 @@
   UIButton *lookUpReservationButton = [[UIButton alloc] init];
   [lookUpReservationButton addTarget:self action:@selector(lookUpReservationButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [lookUpReservationButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-  [lookUpReservationButton setTitle:@"Look Up Reservation" forState:UIControlStateNormal];
+  [lookUpReservationButton setTitle: NSLocalizedString(@"Search Reservations", @"the title of the search reservations button") forState:UIControlStateNormal];
   [lookUpReservationButton setTranslatesAutoresizingMaskIntoConstraints:false];
   lookUpReservationButton.backgroundColor = [UIColor yellowColor];
   
@@ -68,37 +66,6 @@
   lookUpReservationButtonCenterX.active = true;
   NSLayoutConstraint *lookUpReservationButtonCenterY = [NSLayoutConstraint constraintWithItem:lookUpReservationButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:50.00];
   lookUpReservationButtonCenterY.active = true;
-  
-  
-//  UILabel *greenLabel = [[UILabel alloc] init];
-//  [greenLabel setTranslatesAutoresizingMaskIntoConstraints:false];
-//  greenLabel.text = @"Hotels";
-//  greenLabel.backgroundColor = [UIColor greenColor];
-//  [rootView addSubview:greenLabel];
-
-  
-//  UILabel *greenLabel = [[UILabel alloc] init];
-//  [greenLabel setTranslatesAutoresizingMaskIntoConstraints:false];
-//  greenLabel.text = @"Go hawks";
-//  greenLabel.backgroundColor = [UIColor greenColor];
-//  [rootView addSubview:greenLabel];
-//  
-//  NSDictionary *views = @{@"browseHotelsButton" : browseHotelsButton, @"bookARoomButton" : bookARoomButton, @"lookUpReservationButton" : lookUpReservationButton};
-  
-//  NSArray *redViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[redView]-|" options:0 metrics:nil views:views];
-//  [rootView addConstraints:redViewHorizontalConstraints];
-//  
-//  NSArray *redViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[redView]-100-|" options:0 metrics:nil views:views];
-//  [rootView addConstraints:redViewVerticalConstraints];
-//  
-//  NSArray *greenLabelVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[redView]-[greenLabel]" options:0 metrics:nil views:views];
-//  [rootView addConstraints:greenLabelVerticalConstraints];
-  
-    //  NSArray *greenLabelHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[greenLabel]" options:0 metrics:nil views:views];
-    //  [rootView addConstraints:greenLabelHorizontalConstraints];
-//  NSLayoutConstraint *greenLabelCenterXConstraint = [NSLayoutConstraint constraintWithItem:greenLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
-//    //[rootView addConstraint:greenLabelCenterXConstraint];
-// greenLabelCenterXConstraint.active = true;
   
   
   self.view = rootView;

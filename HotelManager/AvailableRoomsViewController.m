@@ -53,6 +53,7 @@
   UITableView *tableView = [[UITableView alloc] initWithFrame:rootView.frame style:UITableViewStylePlain];
   self.tableView = tableView;
   [tableView setTranslatesAutoresizingMaskIntoConstraints:false];
+  [tableView setRowHeight:100];
   [rootView addSubview:tableView];
   
   NSDictionary *views = @{@"tableView" : tableView};
@@ -122,8 +123,8 @@
   
   Room *room = self.rooms[indexPath.row];
   NSLog(@"%@", room.number);
-  cell.textLabel.text = [NSString stringWithFormat:@"%@", room.number];
-  cell.textLabel.text = [NSString stringWithFormat:@"number:%@ | capacity:%@ | rate:%@", room.number, room.beds, room.rate];
+  cell.textLabel.numberOfLines = 0;
+  cell.textLabel.text = [NSString stringWithFormat:@"number:%@\n capacity:%@\n rate:%@", room.number, room.beds, room.rate];
 //  cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, room capacity: %@", room.beds, room.rate];
   
   return cell;
@@ -138,6 +139,8 @@
   indexPath = self.tableView.indexPathForSelectedRow;
   Room *selectedRoom = self.rooms[indexPath.row];
   destinationVC.selectedRoom = selectedRoom;
+  destinationVC.startDate = self.startDate;
+  destinationVC.endDate = self.endDate;
 
   
   

@@ -27,6 +27,7 @@
   UITableView *tableView = [[UITableView alloc] initWithFrame:rootView.frame style:UITableViewStylePlain];
   self.tableView = tableView;
   [tableView setTranslatesAutoresizingMaskIntoConstraints:false];
+  [tableView setRowHeight:100];
   [rootView addSubview:tableView];
   
   NSDictionary *views = @{@"tableView" : tableView};
@@ -69,7 +70,8 @@
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RoomCell" forIndexPath:indexPath];
   
   Room *room = self.rooms[indexPath.row];
-  cell.textLabel.text = [NSString stringWithFormat:@"number:%@ | capacity:%@ | rate:%@", room.number, room.beds, room.rate];
+  cell.textLabel.numberOfLines = 0;
+  cell.textLabel.text = [NSString stringWithFormat:@"number:%@\n capacity:%@\n rate:%@", room.number, room.beds, room.rate];
   
  
   return cell;

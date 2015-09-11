@@ -12,5 +12,6 @@
 @interface ReservationService : NSObject
 
 + (NSArray *)availableRoomsForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
++ (void)bookReservationForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate forRoomNumber:(NSNumber *)roomNumber;
 
 @end

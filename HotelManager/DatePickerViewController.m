@@ -69,6 +69,7 @@
   self.datePicker.datePickerMode = UIDatePickerModeDate;
   self.dateFormatter = [[NSDateFormatter alloc] init];
   self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
+
 }
 
 - (void)didReceiveMemoryWarning {

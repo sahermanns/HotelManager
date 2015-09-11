@@ -13,6 +13,7 @@
 #import "Hotel.h"
 #import "CoreDataStack.h"
 #import "ReservationService.h"
+#import "ViewController.h"
 
 
 @interface BookReservationViewController ()
@@ -37,26 +38,60 @@
   NSLayoutConstraint *reserveRoomLabelTopConstraint = [NSLayoutConstraint constraintWithItem:reserveRoomLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:100.0];
   reserveRoomLabelTopConstraint.active = true;
   
+  UILabel *fromDateLabel = [[UILabel alloc] init];
+  [fromDateLabel setTranslatesAutoresizingMaskIntoConstraints:false];
+  fromDateLabel.text = @"From Date - To Date";
+  fromDateLabel.backgroundColor = [UIColor whiteColor];
+  [rootView addSubview:fromDateLabel];
+  
+  NSLayoutConstraint *fromDateLabelCenterX = [NSLayoutConstraint constraintWithItem:fromDateLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
+  fromDateLabelCenterX.active = true;
+  NSLayoutConstraint *fromDateLabelTopConstraint = [NSLayoutConstraint constraintWithItem:fromDateLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:150.0];
+  fromDateLabelTopConstraint.active = true;
+  
   UILabel *roomDetailLabel = [[UILabel alloc] init];
   [roomDetailLabel setTranslatesAutoresizingMaskIntoConstraints:false];
-  roomDetailLabel.text = [NSString stringWithFormat:@"number:%@ | capacity:%@ | rate:%@", self.selectedRoom.number, self.selectedRoom.beds, self.selectedRoom.rate];
+  roomDetailLabel.text = [NSString stringWithFormat:@"number:%@ ", self.selectedRoom.number];
   roomDetailLabel.backgroundColor = [UIColor whiteColor];
   [rootView addSubview:roomDetailLabel];
   
   NSLayoutConstraint *roomDetailLabelCenterX = [NSLayoutConstraint constraintWithItem:roomDetailLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
   roomDetailLabelCenterX.active = true;
-  NSLayoutConstraint *roomDetailLabelTopConstraint = [NSLayoutConstraint constraintWithItem:roomDetailLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:150.0];
+  NSLayoutConstraint *roomDetailLabelTopConstraint = [NSLayoutConstraint constraintWithItem:roomDetailLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:175.0];
   roomDetailLabelTopConstraint.active = true;
+  
+  UILabel *roomCapacityLabel = [[UILabel alloc] init];
+  [roomCapacityLabel setTranslatesAutoresizingMaskIntoConstraints:false];
+  roomCapacityLabel.text = [NSString stringWithFormat:@"Number of Beds:%@",  self.selectedRoom.beds];
+  roomCapacityLabel.backgroundColor = [UIColor whiteColor];
+  [rootView addSubview:roomCapacityLabel];
+  
+  NSLayoutConstraint *roomCapacityLabelCenterX = [NSLayoutConstraint constraintWithItem:roomCapacityLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
+  roomCapacityLabelCenterX.active = true;
+  NSLayoutConstraint *roomCapacityLabelTopConstraint = [NSLayoutConstraint constraintWithItem:roomCapacityLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:200.0];
+  roomCapacityLabelTopConstraint.active = true;
+  
+  UILabel *roomRateLabel = [[UILabel alloc] init];
+  [roomRateLabel setTranslatesAutoresizingMaskIntoConstraints:false];
+  roomRateLabel.text = [NSString stringWithFormat:@"Price of Room:%@",  self.selectedRoom.rate];
+  roomRateLabel.backgroundColor = [UIColor whiteColor];
+  [rootView addSubview:roomRateLabel];
+  
+  NSLayoutConstraint *roomRateLabelCenterX = [NSLayoutConstraint constraintWithItem:roomRateLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
+  roomRateLabelCenterX.active = true;
+  NSLayoutConstraint *roomRateLabelTopConstraint = [NSLayoutConstraint constraintWithItem:roomRateLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:225.0];
+  roomRateLabelTopConstraint.active = true;
   
   UITextField *firstNameTextField = [[UITextField alloc] init];
   [firstNameTextField setTranslatesAutoresizingMaskIntoConstraints:false];
   firstNameTextField.placeholder = @"First Name";
   firstNameTextField.backgroundColor = [UIColor yellowColor];
+//  firstNameTextField.resignFirstResponder;
   [rootView addSubview:firstNameTextField];
   
   NSLayoutConstraint *firstNameTextFieldCenterX = [NSLayoutConstraint constraintWithItem:firstNameTextField attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
   firstNameTextFieldCenterX.active = true;
-  NSLayoutConstraint *firstNameTextFieldTopConstraint = [NSLayoutConstraint constraintWithItem:firstNameTextField attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:250.0];
+  NSLayoutConstraint *firstNameTextFieldTopConstraint = [NSLayoutConstraint constraintWithItem:firstNameTextField attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:350.0];
   firstNameTextFieldTopConstraint.active = true;
   
   UITextField *lastNameTextField = [[UITextField alloc] init];
@@ -67,8 +102,22 @@
   
   NSLayoutConstraint *lastNameTextFieldCenterX = [NSLayoutConstraint constraintWithItem:lastNameTextField attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
   lastNameTextFieldCenterX.active = true;
-  NSLayoutConstraint *lastNameTextFieldTopConstraint = [NSLayoutConstraint constraintWithItem:lastNameTextField attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:300.0];
+  NSLayoutConstraint *lastNameTextFieldTopConstraint = [NSLayoutConstraint constraintWithItem:lastNameTextField attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:400.0];
   lastNameTextFieldTopConstraint.active = true;
+  
+  UIButton *confirmButton = [[UIButton alloc] init];
+  [confirmButton addTarget:self action:@selector(confirmButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  [confirmButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+  [confirmButton setTitle:@"Confirm" forState:UIControlStateNormal];
+  [confirmButton setTranslatesAutoresizingMaskIntoConstraints:false];
+  confirmButton.backgroundColor = [UIColor redColor];
+  
+  [rootView addSubview:confirmButton];
+  
+  NSLayoutConstraint *confirmButtonCenterX = [NSLayoutConstraint constraintWithItem:confirmButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
+  confirmButtonCenterX.active = true;
+  NSLayoutConstraint *confirmButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:confirmButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-50.0];
+  confirmButtonBottomConstraint.active = true;
 
   
   
@@ -78,30 +127,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-//   AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//  
-//  Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:appDelegate.coreDataStack.managedObjectContext];
-//  
-//  reservation.startDate = self.selectedRoom.startdate;
-//  reservation.endDate = self.selectedRoom.endDate;
-//  
-//  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-//  fetchRequest.predicate = [NSPredicate predicateWithFormat:@"number == 2"];
-//  NSError *fetchError;
-//  NSArray *results = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
-//  if (results.count > 0) {
-//    Room *room = results.firstObject;
-//    reservation.room = room;
-//    NSError *saveError;
-//    if (![appDelegate.coreDataStack.managedObjectContext save:&saveError]) {
-//      NSLog(@"%@",saveError.localizedDescription);
-//    }
-//    
-//  }
+  
   
   
 }
 
+-(void)confirmButtonPressed:(UIButton *)sender {
+  
+  [ReservationService bookReservationForStartDate:self.startDate endDate:self.endDate forRoomNumber:self.selectedRoom.number];
+  ViewController *destinationVC = [[ViewController alloc] init];
+  [self.navigationController pushViewController:destinationVC animated:true];
+  
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

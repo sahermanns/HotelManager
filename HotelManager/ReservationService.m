@@ -52,30 +52,35 @@
   
 }
 
--(void)bookTestReservation {
++ (void)bookReservationForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate forRoomNumber:(NSNumber *)roomNumber {
   
   AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
   
   Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:appDelegate.coreDataStack.managedObjectContext];
   
-  reservation.startDate = [NSDate date];
-  reservation.endDate = [NSDate dateWithTimeInterval:86400 * 2 sinceDate:[NSDate date]];
+  reservation.startDate = startDate;
+  reservation.endDate = endDate;
+  
   
   NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-  fetchRequest.predicate = [NSPredicate predicateWithFormat:@"number == 2"];
+  NSString *predicateString = [NSString stringWithFormat:@"number == %@", roomNumber];
+  fetchRequest.predicate = [NSPredicate predicateWithFormat:predicateString];
   NSError *fetchError;
   NSArray *results = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+
+  
   if (results.count > 0) {
     Room *room = results.firstObject;
     reservation.room = room;
     NSError *saveError;
     if (![appDelegate.coreDataStack.managedObjectContext save:&saveError]) {
       NSLog(@"%@",saveError.localizedDescription);
+    } else {
+      NSLog(@"Your reservation was saved");
     }
-    
   }
-  
-  
 }
+
+
 
 @end
