@@ -14,8 +14,10 @@
 #import "CoreDataStack.h"
 #import "Room.h"
 
-@interface ReservationsListViewController ()
+@interface ReservationsListViewController () <UISearchBarDelegate>
 
+@property (strong, nonatomic) UISearchBar *searchReservationsBar;
+@property (strong, nonatomic) NSString *lastName;
 @property (strong,nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray *reservations;
 
@@ -25,6 +27,21 @@
 
 -(void)loadView {
   UIView *rootView = [[UIView alloc] init];
+  rootView.backgroundColor = [UIColor whiteColor];
+  
+  UISearchBar *searchReservationsBar = [[UISearchBar alloc] init];
+  searchReservationsBar.text = @"Last Name";
+  [searchReservationsBar setTranslatesAutoresizingMaskIntoConstraints:false];
+  searchReservationsBar.backgroundColor = [UIColor yellowColor];
+
+   [rootView addSubview:searchReservationsBar];
+
+  NSLayoutConstraint *searchReservationsBarCenterX = [NSLayoutConstraint constraintWithItem:searchReservationsBar attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
+   searchReservationsBarCenterX.active = true;
+  NSLayoutConstraint *searchReservationsBarTopConstraint = [NSLayoutConstraint constraintWithItem:searchReservationsBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:100.0];
+  searchReservationsBarTopConstraint.active = true;
+  NSLayoutConstraint *searchReservationsBarWidthConstraint = [NSLayoutConstraint constraintWithItem:searchReservationsBar attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:300.0];
+  searchReservationsBarWidthConstraint.active = true;
   
   UITableView *tableView = [[UITableView alloc] initWithFrame:rootView.frame style:UITableViewStylePlain];
   self.tableView = tableView;
@@ -33,7 +50,7 @@
   
   NSDictionary *views = @{@"tableView" : tableView};
   
-  NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|" options:0 metrics:nil views:views];
+  NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-150-[tableView]|" options:0 metrics:nil views:views];
   [rootView addConstraints:tableViewVerticalConstraints];
   NSArray *tableViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|" options:0 metrics:nil views:views];
   [rootView addConstraints:tableViewHorizontalConstraints];
@@ -45,6 +62,7 @@
     [super viewDidLoad];
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
+  self.searchReservationsBar.delegate = self;
   
   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"ReservationCell"];
   
