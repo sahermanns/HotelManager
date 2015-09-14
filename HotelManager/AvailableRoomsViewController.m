@@ -21,6 +21,7 @@
 
 @property (strong,nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray *hotels;
+@property (strong,nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -30,27 +31,21 @@
   UIView *rootView = [[UIView alloc] init];
   rootView.backgroundColor = [UIColor whiteColor];
   
+  self.dateFormatter = [[NSDateFormatter alloc] init];
+  self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
+  
   UILabel *fromDateLabel = [[UILabel alloc] init];
   [fromDateLabel setTranslatesAutoresizingMaskIntoConstraints:false];
-  fromDateLabel.text = [NSString stringWithFormat:@"%@", self.startDate];
+  NSString *startDate = [self.dateFormatter stringFromDate:self.startDate];
+  NSString *endDate = [self.dateFormatter stringFromDate:self.endDate];
+  fromDateLabel.text = [NSString stringWithFormat:@"%@ - %@", startDate, endDate];
   fromDateLabel.backgroundColor = [UIColor whiteColor];
   [rootView addSubview:fromDateLabel];
   
-  NSLayoutConstraint *fromDateLabelCenterX = [NSLayoutConstraint constraintWithItem:fromDateLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:-50.0];
+  NSLayoutConstraint *fromDateLabelCenterX = [NSLayoutConstraint constraintWithItem:fromDateLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant: 0.0];
   fromDateLabelCenterX.active = true;
   NSLayoutConstraint *fromDateLabelTopConstraint = [NSLayoutConstraint constraintWithItem:fromDateLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:100.0];
   fromDateLabelTopConstraint.active = true;
-  
-  UILabel *toDateLabel = [[UILabel alloc] init];
-  [toDateLabel setTranslatesAutoresizingMaskIntoConstraints:false];
-  toDateLabel.text = [NSString stringWithFormat:@"%@", self.endDate];
-  toDateLabel.backgroundColor = [UIColor whiteColor];
-  [rootView addSubview:toDateLabel];
-  
-  NSLayoutConstraint *toDateLabelCenterX = [NSLayoutConstraint constraintWithItem:toDateLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:50.0];
- toDateLabelCenterX.active = true;
-  NSLayoutConstraint *toDateLabelTopConstraint = [NSLayoutConstraint constraintWithItem:toDateLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:rootView attribute:NSLayoutAttributeTop multiplier:1.0 constant:100.0];
-  toDateLabelTopConstraint.active = true;
   
   UITableView *tableView = [[UITableView alloc] initWithFrame:rootView.frame style:UITableViewStylePlain];
   self.tableView = tableView;

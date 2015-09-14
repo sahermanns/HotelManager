@@ -80,7 +80,7 @@
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReservationCell" forIndexPath:indexPath];
   
   Reservation *reservation = self.reservations[indexPath.row];
-  cell.textLabel.text = [NSString stringWithFormat:@"number:%@", reservation.room.number];
+  cell.textLabel.text = [NSString stringWithFormat:@"number:%@ guest:%@", reservation.room.number, reservation.guest.lastName];
   
   
   return cell;

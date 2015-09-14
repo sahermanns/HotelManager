@@ -12,6 +12,7 @@
 #import "Reservation.h"
 #import "CoreDataStack.h"
 #import "AppDelegate.h"
+#import "Guest.h"
 
 @implementation ReservationService
 
@@ -52,7 +53,7 @@
   
 }
 
-+ (void)bookReservationForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate forRoomNumber:(NSNumber *)roomNumber {
++ (void)bookReservationForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate forRoomNumber:(NSNumber *)roomNumber forRoomGuest: (Guest *) roomGuest {
   
   AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
   
@@ -60,6 +61,7 @@
   
   reservation.startDate = startDate;
   reservation.endDate = endDate;
+  reservation.guest = roomGuest;
   
   
   NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];

@@ -15,7 +15,6 @@
 @property (strong, nonatomic) Room *selectedRoom;
 @property (strong, nonatomic) NSDate *startDate;
 @property (strong, nonatomic) NSDate *endDate;
-//@property (strong, nonatomic) NSString  *firstName;
-//@property (strong, nonatomic) NSString *lastName;
+
 
 @end

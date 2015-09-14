@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "CoreDataStack.h"
+#import "Guest.h"
 
 @interface ReservationService : NSObject
 
 + (NSArray *)availableRoomsForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
-+ (void)bookReservationForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate forRoomNumber:(NSNumber *)roomNumber;
++ (void)bookReservationForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate forRoomNumber:(NSNumber *)roomNumber forRoomGuest: (Guest *) roomGuest;
 
 @end
