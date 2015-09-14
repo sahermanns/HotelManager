@@ -32,5 +32,11 @@
   XCTAssertEqual(0, results.count,@"Results should be equal to zero");
 }
 
+//-(void)testBookReservationRoomsForNilDates {
+//  NSArray *results = [ReservationService bookReservationForStartDate:nil endDate:nil forRoomNumber:nil forRoomGuest:nil];
+//  XCTAssertNotNil(results);
+//  XCTAssertEqual(0, results.count,@"Results should be equal to zero");
+//}
+
 
 @end
