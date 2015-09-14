@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HotelListViewController.h"
 #import "DatePickerViewController.h"
+#import "SearchReservationsViewController.h"
 
 #import "GAI.h"
 
@@ -93,6 +94,11 @@
   
 }
 -(void)lookUpReservationButtonPressed:(UIButton *)sender {
+  
+  SearchReservationsViewController *destinationVC = [[SearchReservationsViewController alloc] init];
+  
+  [self.navigationController pushViewController:destinationVC animated:true];
+
   
 }
 

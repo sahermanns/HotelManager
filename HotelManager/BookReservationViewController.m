@@ -130,15 +130,13 @@
     [super viewDidLoad];
   
   
-  
-  
 }
 
 -(void)confirmButtonPressed:(UIButton *)sender {
   
   [ReservationService bookReservationForStartDate:self.startDate endDate:self.endDate forRoomNumber:self.selectedRoom.number];
-  ViewController *destinationVC = [[ViewController alloc] init];
-  [self.navigationController pushViewController:destinationVC animated:true];
+  [self.navigationController popToRootViewControllerAnimated:true];
+
   
 }
 
