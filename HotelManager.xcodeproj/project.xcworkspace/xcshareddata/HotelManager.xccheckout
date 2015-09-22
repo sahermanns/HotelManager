@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>FF6688DA-1E6F-4332-B989-D51DC510951D</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>HotelManager</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>8716EDF8B1C802A28BCD3737233DBC29255E4414</key>
 		<string>https://github.com/sahermanns/HotelManager.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>HotelManager.xcodeproj/project.xcworkspace</string>
+	<string>HotelManager.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8716EDF8B1C802A28BCD3737233DBC29255E4414</key>
